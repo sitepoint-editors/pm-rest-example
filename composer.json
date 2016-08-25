@@ -1,0 +1,14 @@
+{
+    "require": {
+        "ocramius/proxy-manager": "^1.0",
+        "guzzlehttp/guzzle": "^6.2",
+        "silex/silex": "~2.0",
+        "doctrine/common": "^2.6",
+        "zendframework/zend-xmlrpc": "^2.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "": "src/"
+        }
+    }
+}
