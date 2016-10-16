@@ -15,9 +15,9 @@
 ```php -S localhost:9001 -t```
 
 ###Urls
-localhost:9001/books
-localhost:9001/books/1
-localhost:9001/books/1/author
+* localhost:9001/books
+* localhost:9001/books/1
+* localhost:9001/books/1/author
 
 ##Clientpart
 ```php -S localhost:9000 -t```
