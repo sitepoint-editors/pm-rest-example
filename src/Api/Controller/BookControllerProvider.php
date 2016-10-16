@@ -4,60 +4,39 @@ namespace Api\Controller;
 
 use Silex\Application;
 use Silex\Api\ControllerProviderInterface;
-use Symfony\Component\HttpFoundation\JsonResponse as Json;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
-class BookControllerProvider implements ControllerProviderInterface {
-    
+
+class BookControllerProvider implements ControllerProviderInterface
+{
+    /**
+     * Save available ApiControllerActions in a ApiControllerFactory
+     *
+     * @param Application $app
+     * @return mixed
+     */
     public function connect(Application $app)
     {
-        $controllers = $app['controllers_factory'];
+        $controllerFactory = $app['controllers_factory'];
 
         /**
-         * Return a list of the books
+         * Return a list of books
          */
-        $controllers->get('books', function (Application $app){
-            
-            return new Json([
-                'books' => 'List of books...'
-            ]);
 
-        });
-
-        /**
-         * Return book details by Id
-         */
-        $controllers->get('books/{id}', function (Application $app, $id) {
-                        
-            return new Json([
-                'details' => 'Details of book with id ' . $id,
-            ]);
-
-        });
-
-        /**
-         * Return the author(s) of the book
-         */
-        $controllers->get('books/{id}/authors', function (Application $app, $id) {
-                    
-            return new Json([
-                'authors' => 'Authors of book with id ' . $id,
+        $controllerFactory->get('books', function (Application $a)
+        {
+            return new JsonResponse([
+                'books'=>'List of Books'
             ]);
         });
 
-        /**
-         * Return the author(s) of the book
-         */
-        $controllers->get('test-proxy', function (Application $app) {        
-            
-            $proxy = \Proxy\RestProxyFactory::create('\Proxy\BookInterface', 'http://proxy/api/v1');
-
-            return new Json([
-                'resp' => $proxy->getBook('1456754345643223'),
+        $controllerFactory->get('books/{id}/authors', function (Application $app, $id)
+        {
+            return new JsonResponse([
+                'authors'=>'Authors of book with id' . $id,
             ]);
-
         });
 
-        return $controllers;
+        return $controllerFactory;
     }
-
 }

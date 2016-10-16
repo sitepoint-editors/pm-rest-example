@@ -1,32 +1,35 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: root
+ * Date: 16.10.16
+ * Time: 16:15
+ */
 
 namespace RemoteProxy\Annotation;
 
 /**
  * @Annotation
+ * Class Endpoint
+ * @package RemoteProxy\Annotation
  */
 class Endpoint
 {
     /**
-     * The path
-     *
-     * @var string
+     * @var String
      */
     public $path;
-    
+
     /**
-     * The method to access the endpoint
-     *
-     * @var string
+     * @var String
      */
     public $method;
 
-    /**
-     * Instantiate the annotation
-     */
-    public function __construct($parameters)
+    public function __construct(array $parameters)
     {
-        $this->path   = $parameters['path'];
+        $this->path = $parameters['path'];
+
         $this->method = isset($parameters['method']) ? $parameters['method'] : 'get';
     }
+
 }
