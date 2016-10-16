@@ -1,5 +1,5 @@
 ## Silex-Guzzle RemoteProxy
-### Simplify request to different APIS with a interfaced proxies
+### Simplify request to different Api`s with interfaced proxies
 
 #Prerequisits
 * composer installed
