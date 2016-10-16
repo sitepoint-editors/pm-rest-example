@@ -7,7 +7,7 @@
 
 #Installation
 * checkout project
-* composer require silex/silex ocramius/proxy-manager guzzlehttp/guzzle doctrine/doctrine
+* ```composer require silex/silex ocramius/proxy-manager guzzlehttp/guzzle doctrine/doctrine```
 
 #Usage
 
