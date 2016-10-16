@@ -20,10 +20,21 @@ class BookControllerProvider implements ControllerProviderInterface
         $controllerFactory = $app['controllers_factory'];
 
         /**
+         * Return a books details
+         */
+        $controllerFactory->get('books/{id}', function (Application $app, $id)
+        {
+            return new JsonResponse([
+                'details'=>'Details of books with id:'. $id
+            ]);
+        });
+
+
+        /**
          * Return a list of books
          */
 
-        $controllerFactory->get('books', function (Application $a)
+        $controllerFactory->get('books', function (Application $app)
         {
             return new JsonResponse([
                 'books'=>'List of Books'
@@ -33,7 +44,7 @@ class BookControllerProvider implements ControllerProviderInterface
         $controllerFactory->get('books/{id}/authors', function (Application $app, $id)
         {
             return new JsonResponse([
-                'authors'=>'Authors of book with id' . $id,
+                'authors'=>'Authors of book with id:' . $id,
             ]);
         });
 
