@@ -1,9 +1,17 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: root
+ * Date: 16.10.16
+ * Time: 16:47
+ */
 
 namespace RemoteProxy;
 
 use Doctrine\Common\Annotations\AnnotationRegistry;
 use RemoteProxy\Adapter\RestAdapter;
+use ProxyManager\Factory\RemoteObjectFactory;
+use GuzzleHttp\Client;
 
 class RestProxyFactory
 {
@@ -16,18 +24,17 @@ class RestProxyFactory
      * @return \ProxyManager\Proxy\RemoteObjectInterface
      */
     public static function create($interface, $base_uri)
-    {             
-        AnnotationRegistry::registerLoader('class_exists');
+    {
+        $uriResolver = (new UriResolver())->getMappings($interface);
 
         $factory = new \ProxyManager\Factory\RemoteObjectFactory(
             new RestAdapter(
                 new \GuzzleHttp\Client([
                     'base_uri' => rtrim($base_uri, '/') . '/',
                 ]),
-                (new UriResolver())->getMappings($interface)
+                $uriResolver
             )
         );
-
-       return $factory->createProxy($interface);
+        return $factory->createProxy($interface);
     }
 }
