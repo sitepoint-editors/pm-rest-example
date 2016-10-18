@@ -21,7 +21,7 @@ interface LibraryInterface
 
     /**
      * Return books details
-     * @Endpoint(path="/book:id")
+     * @Endpoint(path="/books/:id")
      *
      * @param $id
      * @return mixed
@@ -30,7 +30,7 @@ interface LibraryInterface
 
     /**
      * Return authors of a book
-     * @Endpoint(path="/books:id/authors")
+     * @Endpoint(path="/books/:id/authors")
      * @param $id
      * @return mixed
      */

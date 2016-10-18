@@ -7,7 +7,7 @@
 
 #Installation
 * checkout project
-* ```composer require silex/silex ocramius/proxy-manager guzzlehttp/guzzle doctrine/annotations```
+* ```composer install```
 
 #Usage
 
@@ -24,6 +24,4 @@
 
 ###Urls 
 localhost:9000/test-proxy
-
-
 
