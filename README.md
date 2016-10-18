@@ -25,8 +25,3 @@
 ###Urls 
 localhost:9000/test-proxy
 
-###Run tests
-```phpunit```
-
-
-
